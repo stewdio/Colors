@@ -18,25 +18,34 @@ body {
 textarea {
 
 	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+	box-sizing: border-box;  	
 	position: relative;
 	width:  100%;
 	height: 100%;
 	margin: 0;
 	border: none;
 	background-color: transparent;
-	padding: 0;
+	padding: 38vh 0 0 0;
 	color: #FFF;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-weight: bold;
 	font-size:   12vw;
-	line-height: 90vh;
+	line-height: 12vw;
 	text-align: center;
 	text-transform: uppercase;
-	/*text-shadow: 0 0 1px #000;*/
 	resize: none;
 }
 textarea:focus {
 
 	outline: 0;
+}
+::-moz-selection.noselect {
+
+	background: transparent;
+	text-shadow: none;
+}
+::selection.noselect {
+
+	background: transparent;
+	text-shadow: none;
 }

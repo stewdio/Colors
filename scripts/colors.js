@@ -49,15 +49,39 @@ var colorMap = {
 
 
 
+function makeColor( color ){
+
+	var input = document.getElementById( 'input' )
+
+	document.body.style.backgroundColor = '#'+ color
+	disableSelection()
+	input.selectionStart = 0
+	input.selectionEnd   = input.value.length
+}
+function enableSelection(){
+
+	document.getElementById( 'input' ).classList.remove( 'noselect' )
+}
+function disableSelection(){
+
+	document.getElementById( 'input' ).classList.add( 'noselect' )
+}
+
+
+
+
 document.addEventListener( 'DOMContentLoaded', function(){
 
+	makeColor( '#000' )
+	document.getElementById( 'input' ).addEventListener( 'click', enableSelection )
+	document.getElementById( 'input' ).addEventListener( 'keydown', enableSelection )
 	document.getElementById( 'input' ).addEventListener( 'keyup', function(){
 
 		var 
 		input = this.value.toLowerCase().trim(),
 		color = colorMap[ input ]
 
-		if( color !== undefined ) document.body.style.backgroundColor = '#'+ color
+		if( color !== undefined ) makeColor( color )
 	})
 })
 
