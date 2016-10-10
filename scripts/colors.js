@@ -18,6 +18,7 @@ var colorMap = {
 	//  Remaining Grayscale.
 	
 	gray:      '888',
+	grey:      '888',
 	white:     'EEE',
 
 
@@ -49,40 +50,22 @@ var colorMap = {
 
 
 
-function makeColor( color ){
+function tryColor(){
 
-	var input = document.getElementById( 'input' )
-
-	document.body.style.backgroundColor = '#'+ color
-	disableSelection()
-	input.selectionStart = 0
-	input.selectionEnd   = input.value.length
+	var	
+	element = document.getElementById( 'input' )
+	text    = element.value.toLowerCase().trim()
+	color   = colorMap[ text ]
+	if( color !== undefined ) document.body.style.backgroundColor = '#'+ color
 }
-function enableSelection(){
-
-	document.getElementById( 'input' ).classList.remove( 'noselect' )
-}
-function disableSelection(){
-
-	document.getElementById( 'input' ).classList.add( 'noselect' )
-}
-
-
-
-
 document.addEventListener( 'DOMContentLoaded', function(){
 
-	makeColor( '#000' )
-	document.getElementById( 'input' ).addEventListener( 'click', enableSelection )
-	document.getElementById( 'input' ).addEventListener( 'keydown', enableSelection )
-	document.getElementById( 'input' ).addEventListener( 'keyup', function(){
+	var element = document.getElementById( 'input' )
 
-		var 
-		input = this.value.toLowerCase().trim(),
-		color = colorMap[ input ]
-
-		if( color !== undefined ) makeColor( color )
-	})
+	element.setSelectionRange( element.value.length, element.value.length )
+	element.addEventListener( 'keyup', tryColor )
+	element.focus()
+	tryColor()
 })
 
 
